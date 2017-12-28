@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"></meta>
+<title>Parkwisely User Information</title>
+<style>
+table, th, td {
+	border: 1px solid black;
+	border-spacing: 0px;
+}
+
+th, td {
+	padding: 10px;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<!-- 
+<div th:if="${user.userId != 0}">
+	<h2>Edit user Information</h2>
+	<a th:href="@{/users}">Create New user</a>
+	<form action="#" th:action="@{/parkwisely/user/add}" method="POST" th:object="${user}">
+		User Id <input type="text" id="userId" name="userId" th:value="${user.userId}" readonly="readonly" />
+		<br /> 
+		First Name <input type="text" id="firstName" name="firstName" th:value="${user.firstName}" />
+		<br />
+		Last Name <input type="text" id="lastName" name="lastName" th:value="${user.lastName}" />
+		<br /> 
+		Email Id <input type="text" id="emailId" name="emailId" th:value="${user.emailId}" />
+		<br />
+		Phone No <input type="text" id="phoneNo" name="phoneNo" th:value="${user.phoneNo}" />
+		<br />
+		Gender <input type="text" id="sex" name="sex" th:value="${user.sex}" />
+		<br />
+		  <input type="submit" name="Update" value="Update" /> 
+	</form>
+</div>
+
+ -->
+<div th:if="${user.userId == 0}">
+	<h2>Create New user</h2>
+	<form action="#" th:action="@{/parkwisely/user/add}" method="POST"
+		th:object="${user}">
+		<!--  	userId <input type="text" id="empId" name="empId" /><br /> -->
+		First Name <input type="text" id="firstName" name="firstName" th:value="${user.firstName}" />
+		<br />
+		Last Name <input type="text" id="lastName" name="lastName" th:value="${user.lastName}" />
+		<br /> 
+		Email Id <input type="text" id="emailId" name="emailId" th:value="${user.emailId}" />
+		<br />
+		Phone No <input type="text" id="phoneNo" name="phoneNo" th:value="${user.phoneNo}" />
+		<br />
+		Gender <input type="text" id="sex" name="sex" th:value="${user.sex}" />
+		<br />
+		Corporate Indicator <input type="text" id="corporateInd" name="corporateInd" th:value="${user.corporateInd}" />
+		<br />
+		OTP <input type="text" id="otp" name="otp" th:value="${user.otp}" />
+		<br />
+		<input type="button" id="sendotp" name="SendOTP" value="SendOTP" onclick="sendOtp()" />
+		 <input type="submit" name="Register" value="Register" /> 
+	</form>
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+function sendOtp() {
+	  var xhttp = new XMLHttpRequest();
+	  var phone = $("#phoneNo").val()
+	  var email = $("#emailId").val()
+	  var fn = $("#firstName").val()
+	  alert('came here')
+	  xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	    	alert(this.responseText)
+	    }
+	  };
+	  xhttp.open("POST", "http://localhost:8001/parkwisely/user/sendOTP", true);
+	  xhttp.setRequestHeader("Content-type", "application/json");
+	  xhttp.send(JSON.stringify({phoneNo:$("#phoneNo").val(),emailId:$("#emailId").val(), firstName:$("#firstName").val() }));
+	}
+//]]> 
+    
+</script>
+</html>

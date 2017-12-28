@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"></meta>
+<title>Parkwisely User Information</title>
+<style>
+table, th, td {
+	border: 1px solid black;
+	border-spacing: 0px;
+}
+th, td {
+	padding: 10px;
+}
+</style>
+</head>
+<h2>Parkwisely - User Information </h2>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>User Id</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Email Id</th>
+				<th>Phone No</th>
+				<th>Date of Joining</th>
+				<th>Effective Date</th>
+				<th>Corporate Indicator</th>
+				<th>Gender</th>
+				<th>Edit</th>
+				<th>Delete</th>
+				<th>Veh. Info</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="user : ${users}">
+				<td th:text="${user.userId}"></td>
+				<td th:text="${user.firstName}"></td>
+				<td th:text="${user.lastName}"></td>
+				<td th:text="${user.emailId}"></td>
+				<td th:text="${user.phoneNo}"></td>
+				<td th:text="${user.dateOfJoining}"></td>
+				<td th:text="${user.efftDt}"></td>
+				<td th:text="${user.corporateInd}"></td>
+				<td th:text="${user.sex}"></td>
+				<td><a th:href="@{/parkwisely/user/edit(userId=${user.userId})}">Edit</a></td>
+				<td><a th:href="@{/parkwisely/user/delete(userId=${user.userId})}">Delete</a></td>
+				<td><a th:href="@{/parkwisely/vehicle/getbyuser(userId=${user.userId})}">Veh. Info</a></td>
+			</tr>
+		</tbody>
+	</table>
+	<br />
+	
+</body>
+</html>
