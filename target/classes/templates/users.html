@@ -1,21 +1,35 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1"></meta>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Parkwisely User Information</title>
-<style>
-table, th, td {
-	border: 1px solid black;
-	border-spacing: 0px;
-}
-th, td {
-	padding: 10px;
-}
-</style>
+
 </head>
-<h2>Parkwisely - User Information </h2>
 <body>
-	<table>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Parkwisely</a>
+    </div>
+   
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="container"> 
+<dl>
+<dt>User Information </dt>
+</dl>
+
+<div class=".table-striped"> 
+	<table class="table table-striped">
 		<thead>
 			<tr>
 				<th>User Id</th>
@@ -50,6 +64,8 @@ th, td {
 		</tbody>
 	</table>
 	<br />
-	
+</div>
+</div>
+
 </body>
 </html>

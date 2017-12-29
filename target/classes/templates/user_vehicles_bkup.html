@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
+<head>
 <head>
  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -54,61 +54,31 @@
 			</tr>
 		</tbody>
 	</table>
-</div>
 	<br />
- 
-	<div th:if="${vehicle.vehicleId == 0}" class="well">
-	  <h4 class="text-danger" align="center">New vehicle information </h4> 
+ 	<div  th:if="${vehicle.vehicleId != 0}">
+         <h2>Edit vehicle Information</h2> <a th:href="@{/parkwisely/vehicle/getbyuser(userId=${userId})}">Create New vehicle</a>
+		 <form action="#" th:action="@{/parkwisely/vehicle/add(userId=${userId})}" method="POST" th:object="${vehicle}">
+			vehicleId <input type="text" id="vehicleId" name="vehicleId" th:value="${vehicle.vehicleId}" readonly="readonly" /><br />
+			vehicle Name <input type="text" id="vehicleType" name="vehicleType" th:value="${vehicle.vehicleType}"/><br />
+			Brand  <input type="text" id="brand" name="brand" th:value="${vehicle.brand}"/><br />
+			Model <input type="text" id="model" name="model" th:value="${vehicle.model}"/><br />
+			Reg No <input type="text" id="regNo" name="regNo" th:value="${vehicle.regNo}"/><br />
+			<input type="submit" />
+		</form>
+	</div>
+	<div th:if="${vehicle.vehicleId == 0}">
+	   <h2>Create New vehicle</h2>
 	   <form action="#" th:action="@{/parkwisely/vehicle/add(userId=${userId})}" th:method="@{POST}" th:object="${vehicle}">
 		<!--  	vehicleId <input type="text" id="vehicleId" name="vehicleId" th:value="${vehicle.vehicleId}" readonly="readonly" /><br />
 -->
-
-	<div class="form-group">
-		<label class="control-label col-sm-2" for="vehicleType">Vehicle Name:</label>
-		<div class="col-sm-10">
-		  <input type="text" id="vehicleType" name="vehicleType" class="form-control"
-		  placeholder="Enter Vehicle Name" 
-		  th:value="${vehicle.vehicleType}" />
-		</div>
-	</div>
-	<br /><br /> <br />
-	<div class="form-group">
-		<label class="control-label col-sm-2" for="brand">Brand:</label>
-		<div class="col-sm-10">
-		  <input type="text" id="brand" name="brand" class="form-control"
-		  placeholder="Enter Brand" 
-		  th:value="${vehicle.brand}" />
-		</div>
-	</div>
-	<br /><br />
-	<div class="form-group">
-		<label class="control-label col-sm-2" for="model">Model:</label>
-		<div class="col-sm-10">
-		  <input type="text" id="model" name="model" class="form-control"
-		  placeholder="Enter Model" 
-		  th:value="${vehicle.model}" />
-		</div>
-	</div>
-	<br /><br />
-	
-	<div class="form-group">
-		<label class="control-label col-sm-2" for="regNo">Reg No:</label>
-		<div class="col-sm-10">
-		  <input type="text" id="regNo" name="regNo" class="form-control"
-		  placeholder="Enter Registration Number" 
-		  th:value="${vehicle.regNo}" />
-		</div>
-	</div>
-	
-	<br /><br />
-			<div class="form-group">        
-      			<div class="col-sm-offset-2 col-sm-10">
-				<input type="submit" class="btn btn-default" name="Add Vehicle" value="Add Vehicle"/>
-				</div>
-			</div>
-			<br />
+			Vehicle Name <input type="text" id="vehicleType" name="vehicleType" th:value="${vehicle.vehicleType}"/><br />
+			Brand  <input type="text" id="brand" name="brand" th:value="${vehicle.brand}"/><br />
+		<!--  	Efftdt <input type="text" id="efftdt" name="efftdt" th:value="${vehicle.efftdt}"/><br /> -->
+			Model <input type="text" id="model" name="model" th:value="${vehicle.model}"/><br />
+			Reg No <input type="text" id="regNo" name="regNo" th:value="${vehicle.regNo}"/><br />
+			<input type="submit" />
 		</form>
 	</div>
-</div>
+
 </body>
 </html>
